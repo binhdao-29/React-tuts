@@ -3,39 +3,26 @@ import './App.css';
 import TodoItem from './components/TodoItem';
 import { Component } from 'react';
 
-// function App() {
-//   let todoListItems = [ 
-//     'Go home',
-//     'Go swimming',
-//     'Go to work'
-//   ]
-//   return (
-//     <div className="App">
-//       {
-//         todoListItems.map((item, index) => 
-//           <TodoItem key={index} title={item} />
-//         )
-//       }
-//     </div>
-//   );
-// }
-
 class App extends Component {
   constructor() {
     super();
     this.list = [
-      'Di cho',
-      'Di hoc',
-      'Di an'
-    ]
+      { title : 'Go to school', isComplete : true },
+      { title : 'Go to work', isComplete : true },
+      { title : 'Go to market' },
+      { title : 'Go to park', isComplete : false }
+    ];
   }
   render() {
     return (
       <div className="App">
         {
-          this.list.map((item, index) => 
-            <TodoItem key={index} title={item} />
+          this.list.length > 0 && this.list.map((item, index) => 
+            <TodoItem key={index} item={item} />
           )
+        }
+        {
+          this.list.length === 0 && 'Nothing here'
         }
       </div>
     );
