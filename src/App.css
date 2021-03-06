@@ -1,5 +1,31 @@
 .App {
-  text-align: center;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 2px rgb(138, 138, 138);
+}
+
+.App .Header {
+  display: flex;
+  padding: 10px 5px;
+  border-bottom: 1px solid #bebebe;
+}
+
+.App .Header input {
+  font-weight: 200;
+  font-size: 24px;
+  border: none;
+  padding-left: 10px;
+  opacity: .7;
+}
+
+.App .Header img {
+  margin: 0 1rem 0 1rem;
+}
+
+.App .Header input:focus {
+  outline: none;
 }
 
 .App-logo {
