@@ -6,23 +6,36 @@ import { Component } from 'react';
 class App extends Component {
   constructor() {
     super();
-    this.list = [
-      { title : 'Go to school', isComplete : true },
-      { title : 'Go to work', isComplete : true },
-      { title : 'Go to market' },
-      { title : 'Go to park', isComplete : false }
-    ];
+    this.state = {
+      list : [
+        { title : 'Go to school', isComplete : true },
+        { title : 'Go to work', isComplete : true },
+        { title : 'Go to market' },
+        { title : 'Go to park', isComplete : false }
+      ]
+    }
+    // this.onClicked = this.onClicked.bind(this);
   }
+  onClicked(key) {
+      let itemClick = this.state.list[key];
+      itemClick.isComplete = (itemClick.isComplete === undefined) ? true: !itemClick.isComplete;
+      let todoLists = [...this.state.list];
+      todoLists[key] = itemClick;
+      this.setState({
+        list : todoLists
+      })
+  }
+
   render() {
     return (
       <div className="App">
         {
-          this.list.length > 0 && this.list.map((item, index) => 
-            <TodoItem key={index} item={item} />
+          this.state.list.length > 0 && this.state.list.map((item, index) => 
+            <TodoItem key={index} item={item} onClicked={() => this.onClicked(index) }/>
           )
         }
         {
-          this.list.length === 0 && 'Nothing here'
+          this.state.list.length === 0 && 'Nothing here'
         }
       </div>
     );
