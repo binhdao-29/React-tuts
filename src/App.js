@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Component } from 'react';
 
 import TodoItem from './components/TodoItem';
-import { Component } from 'react';
 import down from './img/down.svg';
 
 class App extends Component {
@@ -19,7 +20,13 @@ class App extends Component {
     }
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
+
+    this.inputElement  = React.createRef();
   }
+  componentDidMount() {
+    this.inputElement.current.focus();
+  }
+
   onClicked(key) {
       let itemClick = this.state.list[key];
       itemClick.isComplete = (itemClick.isComplete === undefined) ? true: !itemClick.isComplete;
@@ -65,7 +72,8 @@ class App extends Component {
           type="text" placeholder="What need to be done?" 
           onKeyUp={this.onKeyUp} 
           value={this.state.newValue}
-          onChange={this.onChange} />
+          onChange={this.onChange}
+          ref={this.inputElement} />
         </div>
         {
           this.state.list.length > 0 && this.state.list.map((item, index) => 
