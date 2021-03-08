@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+
 import TodoItem from './components/TodoItem';
 import { Component } from 'react';
 import down from './img/down.svg';
@@ -12,7 +13,7 @@ class App extends Component {
       list : [
         { title : 'Go to school', isComplete : true },
         { title : 'Go to work', isComplete : true },
-        { title : 'Go to market' },
+        { title : 'Go to market', isComplete : false },
         { title : 'Go to park', isComplete : false }
       ]
     }
